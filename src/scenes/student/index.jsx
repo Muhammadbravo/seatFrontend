@@ -7,8 +7,9 @@ import './StudentSeatInfo.css';
 const Student = () => {
     const navigate = useNavigate()
     const [registrationNumber, setRegistrationNumber] = useState("")
+    const [courseId, setCourseId] = useState("")
     const [isSubmitted, setIsSubmitted] = useState(false);
-    const { data, error, isLoading } = useGetSeatQuery(registrationNumber)
+    const { data, error, isLoading } = useGetSeatQuery({registrationNumber, courseId})
 
     console.log(data, error, isLoading, 'data', registrationNumber);
 
@@ -24,13 +25,20 @@ const Student = () => {
     <div className="container">
       <h2>Student Seat Info</h2>
       <form className="form" onSubmit={handleSubmit}>
-        <input
+      <input
           type="text"
           className="input"
           placeholder="Enter registration number"
           value={registrationNumber}
           onChange={(e) => setRegistrationNumber(e.target.value)}
         />
+        <input
+        type="text"
+        className="input"
+        placeholder="Enter Course Code"
+        value={courseId}
+        onChange={(e) => setCourseId(e.target.value)}
+      />
         {/* <button type="submit" className="button">
           Get Seat Number
         </button> */}
@@ -47,6 +55,18 @@ const Student = () => {
           </p>
           <p>
             Seat Number: {data.student_seat_number}
+          </p>
+          <p>
+            Exam Date: {data.exam_date}
+          </p>
+          <p>
+            Exam Time: {data.exam_time}
+          </p>
+          <p>
+            Exam Venue: {data.exam_venue}
+          </p>
+          <p>
+            Course Code : {data.course}
           </p>
         </div>
       )}

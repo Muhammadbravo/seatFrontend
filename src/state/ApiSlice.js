@@ -3,7 +3,7 @@ import { api } from "./api";
 export const ApiSlice = api.injectEndpoints({
     endpoints: builder => ({
         getSeat: builder.query({
-            query: (registration_number) => `/engine/student/seat/?registration_number=${registration_number}`,
+            query: ({registrationNumber, courseId}) => `/engine/student/seat/?registration_number=${registrationNumber}&course_code=${courseId}`,
         }),
     })
 })
