@@ -9,6 +9,7 @@ const Student = () => {
     const [registrationNumber, setRegistrationNumber] = useState("")
     const [courseId, setCourseId] = useState("")
     const [isSubmitted, setIsSubmitted] = useState(false);
+    const [showImage, setShowImage] = useState(false);
     const { data, error, isLoading } = useGetSeatQuery({registrationNumber, courseId})
 
     console.log(data, error, isLoading, 'data', registrationNumber);
@@ -19,7 +20,9 @@ const Student = () => {
         // Fetch student seat number here
       };
     
-    
+      const handleViewImage = () => {
+        setShowImage(true);
+      };
 
   return (
     <div className="container">
@@ -68,6 +71,10 @@ const Student = () => {
           <p>
             Course Code : {data.course}
           </p>
+          <button onClick={handleViewImage} className="image-container">View Image</button>
+          {showImage && (
+            <img src={data.image} className="course-image" alt="Course Image" /> // Replace data.image_url with the actual image URL property
+          )}
         </div>
       )}
     </div>
