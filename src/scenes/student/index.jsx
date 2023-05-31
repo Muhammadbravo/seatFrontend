@@ -71,7 +71,7 @@ const Student = () => {
           <p>
             Course Code : {data.course}
           </p>
-          <button onClick={handleViewImage} className="image-container">View Image</button>
+          <button onClick={handleViewImage} className="image-container">View Seating Arrangement</button>
           {showImage && (
             <img src={data.image} className="course-image" alt="Course Image" /> // Replace data.image_url with the actual image URL property
           )}
